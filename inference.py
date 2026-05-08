@@ -3,10 +3,6 @@ from pathlib import Path
 import cv2
 import json
 
-# Requirements:
-# pip install ultralytics opencv-python
-# pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cpu
-
 def format_time(seconds):
     hh = int(seconds // 3600)
     mm = int((seconds % 3600) // 60)
@@ -187,7 +183,7 @@ def main(model_path, input_path, output_dir, interval, conf_threshold):
                     print(f"\nSaved visualization to {out_file}")
 
                     # Export to annotations folder for further training (including frames with no detections to allow fixing false negatives)
-                    export_anylabeling_annotation(first_frame_result, output_path / "annotations", f"{input_p.stem}_{span_start_time_str}-{span_end_time_str}")
+                    # export_anylabeling_annotation(first_frame_result, output_path / "annotations", f"{input_p.stem}_{span_start_time_str}-{span_end_time_str}")
 
                     # Reset span state
                     span_start_time_str = None
@@ -209,7 +205,7 @@ def main(model_path, input_path, output_dir, interval, conf_threshold):
             cv2.imwrite(str(out_file), first_frame_img)
             print(f"Saved visualization to {out_file}")
             # Export to annotations folder for further training
-            export_anylabeling_annotation(first_frame_result, output_path / "annotations", f"{input_p.stem}_{span_start_time_str}-{span_end_time_str}")
+            # export_anylabeling_annotation(first_frame_result, output_path / "annotations", f"{input_p.stem}_{span_start_time_str}-{span_end_time_str}")
             
         cap.release()
         print("Video processing complete.")
@@ -233,7 +229,7 @@ def main(model_path, input_path, output_dir, interval, conf_threshold):
                     print(f"Saved visualization to {out_file}")
                     
                     # Export to annotations folder for further training
-                    export_anylabeling_annotation(result, output_path / "annotations", f"{img_file.stem}_{i}")
+                    # export_anylabeling_annotation(result, output_path / "annotations", f"{img_file.stem}_{i}")
         else:
             results = model(str(input_path), conf=conf_threshold, iou=0.45)
             for i, result in enumerate(results):
@@ -243,7 +239,7 @@ def main(model_path, input_path, output_dir, interval, conf_threshold):
                 print(f"Saved visualization to {out_file}")
                 
                 # Export to annotations folder for further training
-                export_anylabeling_annotation(result, output_path / "annotations", f"{input_p.stem}_{i}")
+                # export_anylabeling_annotation(result, output_path / "annotations", f"{input_p.stem}_{i}")
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Run assfinder model inference")

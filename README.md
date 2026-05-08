@@ -1,4 +1,4 @@
-GHOST: AI ass detector for all type of asses (nude, non-nude, anime, NSFW, ...) 
+ASSFINDER: AI ass detector for all type of asses (nude, non-nude, anime, NSFW, ...) 
 
 
 ## Description 
@@ -23,9 +23,14 @@ Tested on python 3.12.5
   ```bash
   pip install ultralytics opencv-python
 
-	# for CPU inference:
+  # for CPU inference:
   # pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cpu
 
   pip install -r requirements.txt
+  ```
+
+3. Run inference
+  ```bash
+  python inference.py --model model/assfinder-26l-dev-v6.1.pt --input input.jpg --out output
   ```
 

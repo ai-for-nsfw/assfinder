@@ -9,7 +9,7 @@ Tested on python 3.12.5
 ## Example detection results
 
 <div>
-<img src="/examples/DominikaSvanovaAssLabeled.webp" width="360"/>
+<img src="/examples/DominikaSvanovaAssLabeled.webp" width="640"/>
 <div/>
 
 ## Installation
